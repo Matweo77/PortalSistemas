@@ -1,0 +1,23 @@
+@media (min-width:1800px) {
+    .Espaciado-extra-grande{
+        padding: 3.5rem 6rem 0 5rem;
+    }
+    .altura-extra-grande{
+        height: 67vh;
+    }
+    .ancho-extra-grande{
+        width: 128vh;
+    }
+    .imagen-logo{
+        height: 55vh
+    }
+    .altura-formulario{
+        height: 90vh;
+    }
+}
+
+@media (max-width: 770px) {
+    .formulario-login{
+      padding: 1.3rem;
+    }  
+}
