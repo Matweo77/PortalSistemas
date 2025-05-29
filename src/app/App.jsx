@@ -18,7 +18,7 @@ import Login_Sersocial from '../Pages/Login_Sersocial';
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="system">
+    <ThemeProvider defaultTheme='light'> 
         <Routes>
           <Route path="/login_sersocial" element={<Login_Sersocial />} /> {/* Si quiero agregar un ruta sin la navtop y la sidebar, lo coloco aqui */}
             <Route path="/" element={<Navigate to="/login_sersocial" replace />} /> {/* Raiz del proyecto */}

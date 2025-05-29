@@ -87,73 +87,91 @@ const Portal = () => {
     };
 
   return (
-    <div className="w-full max-w-8xl 3xl:max-w-40xl mx-auto pt-12 pb-6.5 px-0 mt-2">
-      <div className="text-start -mt-6 mb-8 ">
-        <h2 className="text-5xl font-bold mb-2 text-[#118ffb]">Portal de Sistemas</h2>
-        <p className="text-muted-foreground">Acceso centralizado a todos los sistemas de la institución de salud</p>
-      </div>
+    <div className="w-full max-w-8xl 3xl:max-w-40xl mx-auto pt-6 sm:pt-12 pb-4 sm:pb-6.5 px-4 sm:px-0 mt-2">
+    <div className="text-start -mt-2 sm:-mt-6 mb-4 sm:mb-8">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-1 sm:mb-2 text-[#118ffb]">Portal de Sistemas</h2>
+      <p className="text-sm sm:text-base text-muted-foreground">
+        Acceso centralizado a todos los sistemas de la institución de salud
+      </p>
+    </div>
 
-      <div className="flex flex-col space-y-4 mb-8">
-        <div className="flex items-center relative ">
-          <Search className="absolute left-3 h-5 w-6 text-muted-foreground " />
+    <div className="flex flex-col space-y-4 mb-6 sm:mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center relative space-y-4 sm:space-y-0">
+        <div className="relative w-full sm:w-auto sm:flex-grow">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <Input
             placeholder="Buscar sistemas..."
-            className="pl-10 w-200 h-12 shadow-sm "
+            className="pl-10 h-10 sm:h-12 shadow-sm w-full"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-        <Tabs defaultValue="todos" className="w-full " onValueChange={setActiveTab}>
-          <TabsList className="grid w-full max-w-lg ml-auto grid-cols-4 h-13">
-            <TabsTrigger  className="cursor-pointer" value="todos">Todos</TabsTrigger>
-            <TabsTrigger className="cursor-pointer" value="Beneficios">Beneficios</TabsTrigger>
-            <TabsTrigger className="cursor-pointer" value="gestionhumana">Gestion Humana</TabsTrigger>
-            <TabsTrigger className="cursor-pointer ml-3" value="gestionriesgo">Gestion Riesgo</TabsTrigger>
+        </div>
+        <Tabs defaultValue="todos" className="w-full sm:ml-4" onValueChange={setActiveTab}>
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 sm:max-w-lg sm:ml-auto h-auto">
+            <TabsTrigger className="cursor-pointer text-xs sm:text-sm py-2" value="todos">
+              Todos
+            </TabsTrigger>
+            <TabsTrigger className="cursor-pointer text-xs sm:text-sm py-2" value="Beneficios">
+              Beneficios
+            </TabsTrigger>
+            <TabsTrigger className="cursor-pointer text-xs sm:text-sm py-2" value="gestionhumana">
+              Gestion Humana
+            </TabsTrigger>
+            <TabsTrigger className="cursor-pointer text-xs sm:text-sm py-2" value="gestionriesgo">
+              Gestion Riesgo
+            </TabsTrigger>
           </TabsList>
         </Tabs>
-        </div>   
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[27vh]">
-        {filteredSistemas.map((sistema) => (
-          <Card key={sistema.id} className="overflow-hidden  transform hover:translate-y-2 transition-transform duration-300">
-            <CardContent>
-            <div className="flex justify-center">{sistema.image}</div>
-            </CardContent>
-            <CardHeader className="flex flex-row items-center justify-center gap-3 -mb-5">
-              {/* <h3 className="font-semibold text-lg">{sistema.title}</h3> */}
-            </CardHeader>
-            <CardContent>
-               <p className="text-sm text-muted-foreground text-center">{sistema.description}</p>
-            </CardContent>
-            <CardFooter>
-              <Button 
-              variant="outline" 
-              onClick={() =>{ 
-                handleRedirect(sistema.url)
-              }} 
-              className="w-full cursor-pointer">
-                Acceder al sistema
-              </Button>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
-
-      <footer className="mt-16 pt-8 border-t text-sm text-muted-foreground flex flex-col md:flex-row justify-between items-center h-8">
-        <div>© 2025 Sersocial ips. Todos los derechos reservados.</div>
-        <div className="flex gap-4 mt-4 md:mt-0 [&_hover:underline]"> {/* El [&_a] funciona para compartir clases a los elementos hijos */}
-          <a href="https://www.sersocial.org/wp-content/uploads/2023/08/FSER-PES-POL-001-POLITICA-DE-PROTECCION-DE-DATOS-PERSONALES.pdf">
-            Términos
-          </a>
-          <a href="https://www.sersocial.org/wp-content/uploads/2023/08/FSER-PES-POL-001-POLITICA-DE-PROTECCION-DE-DATOS-PERSONALES.pdf" >
-            Privacidad
-          </a>
-          <a href="https://www.sersocial.org/wp-content/uploads/2023/08/FSER-PES-POL-001-POLITICA-DE-PROTECCION-DE-DATOS-PERSONALES.pdf">
-            Contacto
-          </a>
-        </div>
-      </footer>
     </div>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 min-h-[27vh]">
+      {filteredSistemas.map((sistema) => (
+        <Card
+          key={sistema.id}
+          className="overflow-hidden transform hover:translate-y-2 transition-transform duration-300"
+        >
+          <CardContent>
+            <div className="flex justify-center">{sistema.image}</div>
+          </CardContent>
+          <CardHeader className="flex flex-row items-center justify-center gap-3 -mb-5">
+            {/* <h3 className="font-semibold text-lg">{sistema.title}</h3> */}
+          </CardHeader>
+          <CardContent>
+            <p className="text-xs sm:text-sm text-muted-foreground text-center">{sistema.description}</p>
+          </CardContent>
+          <CardFooter>
+            <Button
+              variant="outline"
+              onClick={() => {
+                handleRedirect(sistema.url)
+              }}
+              className="w-full cursor-pointer text-xs sm:text-sm"
+            >
+              Acceder al sistema
+            </Button>
+          </CardFooter>
+        </Card>
+      ))}
+    </div>
+
+    <footer className="mt-8 sm:mt-16 pt-4 sm:pt-8 border-t text-xs sm:text-sm text-muted-foreground flex flex-col md:flex-row justify-between items-center h-auto sm:h-8">
+      <div className="mb-3 md:mb-0 text-center md:text-left">
+        © 2025 Sersocial ips. Todos los derechos reservados.
+      </div>
+      <div className="flex gap-2 sm:gap-4 [&_a:hover]:underline">
+        <a href="https://www.sersocial.org/wp-content/uploads/2023/08/FSER-PES-POL-001-POLITICA-DE-PROTECCION-DE-DATOS-PERSONALES.pdf">
+          Términos
+        </a>
+        <a href="https://www.sersocial.org/wp-content/uploads/2023/08/FSER-PES-POL-001-POLITICA-DE-PROTECCION-DE-DATOS-PERSONALES.pdf">
+          Privacidad
+        </a>
+        <a href="https://www.sersocial.org/wp-content/uploads/2023/08/FSER-PES-POL-001-POLITICA-DE-PROTECCION-DE-DATOS-PERSONALES.pdf">
+          Contacto
+        </a>
+      </div>
+    </footer>
+  </div>
   )
 }
 

@@ -1,9 +1,10 @@
 import React from 'react'
-import BackgroundPaths from '../../themes/BackgroundPaths'
 
 function Setting() {
   return (
-    <BackgroundPaths/>
+   <div>
+    <p>Estamos trabajando en ello</p>
+   </div>
   )
 }
 

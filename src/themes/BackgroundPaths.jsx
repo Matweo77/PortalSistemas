@@ -45,7 +45,7 @@ function FloatingPaths({ position }) {
   )
 }
 
-export default function BackgroundPaths({ title = "Background Paths" }) {
+export default function BackgroundPaths({ title = "*" }) { // He quitado el titulo
   const words = title.split(" ")
 
   return (

@@ -10,18 +10,10 @@ export function ThemeProvider({ children, defaultTheme = 'system', ...props }) {
   useEffect(() => {
     const root = window.document.documentElement;
     
-    // Eliminar clases antiguas
+    // Eliminar clases antiguas.
     root.classList.remove('light', 'dark');
-    
-    // Agregar la clase apropiada
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-      root.classList.add(systemTheme);
-    } else {
-      root.classList.add(theme);
-    }
+    // Forzar a agregar tema claro independiente del tema del sistema o navegador.
+    root.classList.add('light') // Esto fue lo que agregue para forzar el tema claro.
     
     localStorage.setItem('theme', theme);
   }, [theme]);

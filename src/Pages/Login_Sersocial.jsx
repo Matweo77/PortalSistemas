@@ -63,7 +63,7 @@ export default function  Login_Sersocial({ className, ...props }) {
                   </div>
                   <div className="grid gap-2">
                     <div className="flex items-center">
-                      <Label htmlFor="Contraseña" onClick={handleClickShowPassword}>
+                      <Label htmlFor="Contraseña" >{/* onClick={handleClickShowPassword} */}
                         Contraseña
                       </Label>
                       <a href="#" className="ml-auto text-blue-800 text-sm underline-offset-2 hover:underline">
@@ -73,7 +73,7 @@ export default function  Login_Sersocial({ className, ...props }) {
                     <Input
                       className="h-13"
                       id="password"
-                      type={showPassword ? "text" : "password"}
+                      //type={showPassword ? "text" : "password"}
                       placeholder="Contraseña"
                       required
                     />
@@ -84,7 +84,7 @@ export default function  Login_Sersocial({ className, ...props }) {
                   <Alert className="bg-yellow-100 text-amber-700 border-none flex items-center space-x-2">
                     <CheckCircle className="h-4 w-4" />
                     <AlertDescription className="py-1 text-amber-900">
-                      <strong>Estás usando {email} &nbsp;&nbsp; 👀</strong>
+                      <strong>Estás usando {email}</strong>
                     </AlertDescription>
                   </Alert>
                   <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border"></div>
