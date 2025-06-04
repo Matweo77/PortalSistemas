@@ -35,12 +35,12 @@ export function TopNav() {
             ))}
           </nav>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 w-[100%] justify-end">
           <Notifications />
           {/* <ThemeToggle /> */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+              <Button variant="ghost" className="relative h-8 w-8 rounded-full ">
                 <Avatar className="h-8 w-8">
                   <AvatarImage src={user.avatar} alt={user.fullName} />
                   <AvatarFallback>

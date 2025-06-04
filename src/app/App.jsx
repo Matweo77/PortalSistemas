@@ -15,6 +15,8 @@ import Setting from '../Pages/user/Setting';
 import Help from '../Pages/user/Help';
 import Profile from '../Pages/user/Profile';
 import Login_Sersocial from '../Pages/Login_Sersocial';
+import LoginButton from '../components/LoginButton';
+import Callback from '../Pages/Callback'; // Asegúrate de importar el componente Callback
 
 function App() {
   return (
@@ -22,6 +24,9 @@ function App() {
         <Routes>
           <Route path="/login_sersocial" element={<Login_Sersocial />} /> {/* Si quiero agregar un ruta sin la navtop y la sidebar, lo coloco aqui */}
             <Route path="/" element={<Navigate to="/login_sersocial" replace />} /> {/* Raiz del proyecto */}
+
+            <Route path="/" element={<LoginButton />} />
+            <Route path="/callback" element={<Callback />} />
 
           {/* Seccion para Beneficios */}
           <Route path="/Beneficios" element={<DashboardLayout />}>

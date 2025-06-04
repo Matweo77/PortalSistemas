@@ -14,4 +14,6 @@ export default defineConfig({
       // port : 3000, Cambia el puerto a 3000
     }
   },
+  //base: "/PortalSistemas/",
+  base: "http://localhost:5173/"
 });

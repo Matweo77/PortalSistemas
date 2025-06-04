@@ -15,8 +15,8 @@ export default function Profile() {
           <p className="text-sm text-muted-foreground">Miercoles 26/03/2025</p>
         </div>
         <div className="flex items-center">
-          <div className="relative">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+          <div className="relative  hidden md:block">
+            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground sm-d-none" />
             <Input type="search" placeholder="Search" className="w-90 pl-8 bg-muted/50" />
           </div>
         </div>
