@@ -4,29 +4,46 @@ import { Notifications } from "../components/notifications";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 import { Button } from "../components/ui/button";
+import { useEffect, useState } from 'react';
+import LogoutButton from "../components/LogoutButton";
 
 export function TopNav() {
   const { pathname } = useLocation();
   const pathSegments = pathname.split("/").filter(Boolean);
   
-  const user = {
-    fullName: "Usuario Sersocial",
-    email: "usuario@sersocial.org",
-    avatar: "S" // Aqui puedes colocar un url de imagen o un icono
-  };
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const token = localStorage.getItem('access_token');
+    if (!token) return;
 
+    fetch('http://localhost:8000/api/user/profile/', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }, 
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('No autorizado');
+        return res.json();
+      })
+      .then(data => setUser(data))
+      .catch(err => console.error(err));
+  }, []);
+  
   return (
     <header className="sticky top-0 z-40 border-b bg-background">
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
         <div className="hidden md:block">
           <nav className="flex items-center space-x-2">
-            <Link to="/bienvenido" className="text-sm font-medium">Bienvenido</Link>
-        
+            <Link to="/bienvenido" className="text-sm font-medium">
+              Bienvenido
+            </Link>
+            
+
             {pathSegments.map((segment, index) => (
               <div key={segment} className="flex items-center">
                 <span className="text-muted-foreground">/</span>
-                <Link 
-                  to={`/${pathSegments.slice(0, index + 1).join("/")}`} 
+                <Link
+                  to={`/${pathSegments.slice(0, index + 1).join("/")}`}
                   className="text-sm font-medium ml-2"
                 >
                   {segment.charAt(0).toUpperCase() + segment.slice(1)}
@@ -40,23 +57,33 @@ export function TopNav() {
           {/* <ThemeToggle /> */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-8 w-8 rounded-full ">
+              <Button
+                variant="ghost"
+                className="relative h-8 w-8 rounded-full "
+              >
                 <Avatar className="h-8 w-8">
-                  <AvatarImage src={user.avatar} alt={user.fullName} />
+                  <AvatarImage />
                   <AvatarFallback>
-                    {user.fullName
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
+                    {user?.name
+                      ?.split(" ")
+                      .slice(0, 2) // tomar solo las dos primeras palabras
+                      .map((n) => n[0]) // tomar la primera letra de cada palabra
+                      .join("")
+                      .toUpperCase()}{" "}
                   </AvatarFallback>
+                
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">{user.fullName}</p>
-                  <p className="text-xs leading-none text-muted-foreground">{user.email}</p>
+                  <p className="text-sm font-medium leading-none">
+                    {user?.name}
+                  </p>
+                  <p className="text-xs leading-none text-muted-foreground">
+                    {user?.username}
+                  </p>
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
@@ -66,9 +93,13 @@ export function TopNav() {
               <DropdownMenuItem asChild>
                 <Link to="/configuracion">Configuracion</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem><span className="text-red-600">Cerrar sesion</span></DropdownMenuItem>
+              <DropdownMenuItem>
+                <span className="text-red-600">Cerrar sesion</span>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+
+          <LogoutButton />
         </div>
       </div>
     </header>

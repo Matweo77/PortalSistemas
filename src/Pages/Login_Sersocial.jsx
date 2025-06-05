@@ -51,7 +51,7 @@ export default function  Login_Sersocial({ className, ...props }) {
                   <div className="grid gap-2 mt-10">
                     <Label htmlFor="email">Email</Label>
                     <Input
-                      className="h-13"
+                      className="h-11.5"
                       id="email"
                       type="email"
                       placeholder="Sersocial@outlook.org"
@@ -72,16 +72,16 @@ export default function  Login_Sersocial({ className, ...props }) {
                       </a>
                     </div>
                     <Input
-                      className="h-13"
+                      className="h-11.5"
                       id="password"
                       // type={showPassword ? "text" : "password"}
                       placeholder="Contraseña"
                       // required
                     />
                   </div>
-                  {/* <Button onClick={handleRedirect} type="submit" className="w-full">
-                    Login
-                  </Button> */}
+                   <Button className="w-full rounded-sm"> {/* type="submit" onClick={handleRedirect}  */}
+                    Iniciar sesión
+                  </Button> 
                   <LoginButton></LoginButton>
 
                   <Alert className="bg-yellow-100 text-amber-700 border-none flex items-center space-x-2">

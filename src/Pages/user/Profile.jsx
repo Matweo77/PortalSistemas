@@ -4,21 +4,46 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Bell, Search } from "lucide-react"
+import { useEffect, useState } from 'react';
 
 export default function Profile() {
+  const [user, setUser] = useState(null);
+
+  //Hook para obtener los datos del usuario
+  useEffect(() => {
+    const token = localStorage.getItem('access_token');
+    if (!token) return;
+
+    fetch('http://localhost:8000/api/user/profile/', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('No autorizado');
+        return res.json();
+      })
+      .then(data => setUser(data))
+      .catch(err => console.error(err));
+  }, []);
+
+  if (!user) return <div>Cargando datos del usuario...</div>;
+
+  
+
   return (
     <div className="w-full mx-auto bg-white rounded-lg ">
       {/* Header */}
       <div className="flex items-center justify-between p-1 border-b">
         <div className="space-y-1">
-          <h1 className="text-lg font-medium ">Bienvenido, @Usuario</h1>
+          <h1 className="text-lg font-medium ">Bienvenido, {user?.name} </h1>
           <p className="text-sm text-muted-foreground">Miercoles 26/03/2025</p>
         </div>
         <div className="flex items-center">
-          <div className="relative  hidden md:block">
+          {/* <div className="relative  hidden md:block">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground sm-d-none" />
             <Input type="search" placeholder="Search" className="w-90 pl-8 bg-muted/50" />
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -35,7 +60,7 @@ export default function Profile() {
           </Avatar>
           <div className="flex items-center justify-between flex-1 pb-4">
             <div>
-              <h2 className="text-xl font-semibold">Usuario@Sersocial.ips</h2>
+              <h2 className="text-xl font-semibold">{user?.username}</h2>
               <p className="text-sm text-muted-foreground">Sersocial ips</p>
             </div>
             {/* <Button size="sm">Edit</Button> */}
@@ -93,18 +118,17 @@ export default function Profile() {
             </div>
 
             <div className="mt-12">
-              <h3 className="text-sm font-medium mb-2">My correo electrónico</h3> 
+              <h3 className="text-sm font-medium mb-2">Mi correo electrónico</h3> 
               <div className="flex items-center gap-3 p-2 bg-muted/30 rounded-md">
                 <div className="h-6 w-6 rounded bg-[#5769ee] flex items-center justify-center text-white text-xs">@</div>
                 <div>
-                  <p className="text-sm">Sersocial@outlook.org</p>
+                  <p className="text-sm">{user?.username}</p>
                   <p className="text-xs text-muted-foreground">activo hoy</p>
                 </div>
-              </div>
-              
-               <Button variant="ghost" size="sm" className="text-blue-500 hover:text-blue-600 hover:bg-blue-50 px-0">
+              </div>              
+               {/* <Button variant="ghost" size="sm" className="text-blue-500 hover:text-blue-600 hover:bg-blue-50 px-0">
                 + Add Email Address
-              </Button>
+              </Button> */}
             </div>
           </CardContent>
         </Card>
