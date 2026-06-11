@@ -13,12 +13,12 @@ import FloatingPaths from "@/themes/BackgroundPaths"
 
 
 export default function  Login_Sersocial({ className, ...props }) {
-  const LoginImage = new URL("../assets/images/componentes/login/Imagen4.png", import.meta.url).href
+  const LoginImage = new URL("../assets/images/componentes/login/logo.jpg", import.meta.url).href
   // const LoginImage2 = new URL('../assets/images/componentes/login/Imagen-fondo.png', import.meta.url).href;  Imagen svg
   const LoginItems = [{ id: 1, image: LoginImage }] // {id: 2, image: LoginImage2}
   const navigate = useNavigate()
   // const [showPassword, setShowPassword] = useState(false)
-  const [email, setEmail] = useState("ejemplo@Sersocial.org")
+  const [email, setEmail] = useState("miportalweb@miportal.org")
 
   // const handleClickShowPassword = () => {
   //   setShowPassword(!showPassword)
@@ -45,7 +45,7 @@ export default function  Login_Sersocial({ className, ...props }) {
               <form className="md:p-10 xl:p-7 mt-7 Espaciado-extra-grande formulario-login md:max-w-[80vh]">
                 <div className="flex flex-col gap-6">
                   <div className="flex flex-col items-center text-center">
-                    <h1 className="text-4xl font-bold">PORTAL SERSOCIAL IPS</h1>
+                    <h1 className="text-4xl font-bold">MI PORTAL WEB</h1>
                   </div>
                   <div className="grid gap-2 mt-10">
                     <Label htmlFor="email">Email</Label>
