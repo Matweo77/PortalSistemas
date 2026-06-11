@@ -12,10 +12,7 @@ import Pagos from '../Pages/GestionHumana/Pagos';
 import Setting from '../Pages/user/Setting';
 import Help from '../Pages/user/Help';
 import Profile from '../Pages/user/Profile';
-import Login_Sersocial from '../Pages/Login_Sersocial';
-import LoginButton from '../components/LoginButton';
-import Callback from '../Pages/Callback'; 
-import ProtectedRoute from '../context/ProtectedRoute';
+import Login_Sersocial from '../Pages/Login_Sersocial'; 
 import  NotFound from '../components/error/NotFound'; 
 
 function App() {
@@ -25,11 +22,9 @@ function App() {
       <Routes>
         {/* Rutas públicas */}
         <Route path="/login_sersocial" element={<Login_Sersocial />} />
-        <Route path="/callback" element={<Callback />} />
         <Route path="/" element={<Navigate to="/login_sersocial" replace />} />
-        <Route path="/" element={<LoginButton />} />
 
-        <Route element={<ProtectedRoute />}> {/* Rutas protegidas con ProtectedRoute */}
+        <Route > {/* Rutas protegidas con ProtectedRoute */}
           {/* Beneficios */}
           <Route path="/Beneficios" element={<DashboardLayout />}>
             <Route path="sifood" element={<Sifood />} />
@@ -56,17 +51,7 @@ function App() {
           <Route path='/profile' element={<DashboardLayout />}>  <Route index element={<Profile/>} />  </Route>
         </Route>
         
-        {/* Ruta catch-all para rutas no definidas */}
-        <Route path="*" 
-          element={
-            isAuthenticated ? (
-                           //<Navigate to="/bienvenido" replace />
-              <NotFound /> // Aqui redireccione al componente NotFound
-            ) : (
-              <Navigate to="/login_sersocial" replace />
-            )
-          } 
-        />
+
       </Routes> 
     </ThemeProvider>
   );

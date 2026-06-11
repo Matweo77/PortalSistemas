@@ -7,10 +7,10 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-const Imagen_sifood = new URL('../assets/images/componentes/Portal/Sifood_Logo.png', import.meta.url).href;
-const Imagen_seragil = new URL('../assets/images/componentes/Portal/Seragil_Logo.png', import.meta.url).href;
-const Imagen_permisos = new URL('../assets/images/componentes/Portal/Permisos_Logo.png', import.meta.url).href;
-const Imagen_predeterminada = new URL('../assets/images/componentes/Login/1.png', import.meta.url).href;
+const Imagen_sifood = new URL('../assets/images/componentes/Portal/F1.jpg', import.meta.url).href;
+const Imagen_seragil = new URL('../assets/images/componentes/Portal/F2.jpg', import.meta.url).href;
+const Imagen_permisos = new URL('../assets/images/componentes/Portal/F3jpg.jpg', import.meta.url).href;
+const Imagen_predeterminada = new URL('../assets/images/componentes/Portal/F4.jpg', import.meta.url).href;
 
   // Renderizando imagen de logo
   const LoginItems = [
@@ -89,9 +89,9 @@ const Portal = () => {
   return (
     <div className="w-full max-w-8xl 3xl:max-w-40xl mx-auto pt-6 sm:pt-12 pb-4 sm:pb-6.5 px-4 sm:px-0 mt-2">
     <div className="text-start -mt-2 sm:-mt-6 mb-4 sm:mb-8">
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-1 sm:mb-2 text-[#118ffb]">Portal de Sistemas</h2>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-1 sm:mb-2 text-[#118ffb]">Mi Portal Web</h2>
       <p className="text-sm sm:text-base text-muted-foreground">
-        Acceso centralizado a todos los sistemas de la institución de salud
+        Acceso centralizado a publicaciones de mi negocio
       </p>
     </div>
 
@@ -100,7 +100,7 @@ const Portal = () => {
         <div className="relative w-full sm:w-auto sm:flex-grow">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <Input
-            placeholder="Buscar sistemas..."
+            placeholder="Buscar inforamacion..."
             className="pl-10 h-10 sm:h-12 shadow-sm w-full"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -115,10 +115,10 @@ const Portal = () => {
               Beneficios
             </TabsTrigger>
             <TabsTrigger className="cursor-pointer text-xs sm:text-sm py-2" value="gestionhumana">
-              Gestion Humana
+              Noticias
             </TabsTrigger>
             <TabsTrigger className="cursor-pointer text-xs sm:text-sm py-2" value="gestionriesgo">
-              Gestion Riesgo
+              Eventos
             </TabsTrigger>
           </TabsList>
         </Tabs>
@@ -148,7 +148,7 @@ const Portal = () => {
               }}
               className="w-full cursor-pointer text-xs sm:text-sm"
             >
-              Acceder al sistema
+              Acceder a la informacion
             </Button>
           </CardFooter>
         </Card>
@@ -157,7 +157,7 @@ const Portal = () => {
 
     <footer className="mt-8 sm:mt-16 pt-4 sm:pt-8 border-t text-xs sm:text-sm text-muted-foreground flex flex-col md:flex-row justify-between items-center h-auto sm:h-8">
       <div className="mb-3 md:mb-0 text-center md:text-left">
-        © 2025 Sersocial ips. Todos los derechos reservados.
+        © 2025 Events Global. Todos los derechos reservados.
       </div>
       <div className="flex gap-2 sm:gap-4 [&_a:hover]:underline">
         <a href="https://www.sersocial.org/wp-content/uploads/2023/08/FSER-PES-POL-001-POLITICA-DE-PROTECCION-DE-DATOS-PERSONALES.pdf">

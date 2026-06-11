@@ -27,7 +27,7 @@ export default function Profile() {
       .catch(err => console.error(err));
   }, []);
 
-  if (!user) return <div>Cargando datos del usuario...</div>;
+  // if (!user) return <div>Cargando datos del usuario...</div>;
 
   
 

@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import '../styles/Home.css'
 
-const Fondocarousel_1 = new URL('../assets/images/componentes/Carrousel/Fondo-1.jpg', import.meta.url).href;
-const Fondocarousel_2 = new URL('../assets/images/componentes/Carrousel/Fondo-2.jpg', import.meta.url).href;
-const Fondocarousel_3 = new URL('../assets/images/componentes/Carrousel/Fondo-3.jpg', import.meta.url).href;
-const Fondocarousel_4 = new URL('../assets/images/componentes/Carrousel/Fondo-4.png', import.meta.url).href;
+const Fondocarousel_1 = new URL('../assets/images/componentes/Carrousel/F1.jpg', import.meta.url).href;
+const Fondocarousel_2 = new URL('../assets/images/componentes/Carrousel/F2.jpg', import.meta.url).href;
+const Fondocarousel_3 = new URL('../assets/images/componentes/Carrousel/F3.jpg', import.meta.url).href;
+const Fondocarousel_4 = new URL('../assets/images/componentes/Carrousel/F4.jpg', import.meta.url).href;
 
 const carouselItems = [
   {id: 1, image: Fondocarousel_1,},

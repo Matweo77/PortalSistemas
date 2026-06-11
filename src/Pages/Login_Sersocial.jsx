@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react"
-//import { useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -10,14 +10,13 @@ import { CheckCircle } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import "../styles/login.css" // Importa el archivo CSS para los estilos personalizados
 import FloatingPaths from "@/themes/BackgroundPaths" 
-import LoginButton  from "../components/LoginButton"
 
 
 export default function  Login_Sersocial({ className, ...props }) {
   const LoginImage = new URL("../assets/images/componentes/login/Imagen4.png", import.meta.url).href
   // const LoginImage2 = new URL('../assets/images/componentes/login/Imagen-fondo.png', import.meta.url).href;  Imagen svg
   const LoginItems = [{ id: 1, image: LoginImage }] // {id: 2, image: LoginImage2}
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   // const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState("ejemplo@Sersocial.org")
 
@@ -25,10 +24,10 @@ export default function  Login_Sersocial({ className, ...props }) {
   //   setShowPassword(!showPassword)
   // }
 
-  // const handleRedirect = (e) => {
-  //   e.preventDefault()
-  //   navigate("/bienvenido")
-  // }
+   const handleRedirect = (e) => {
+     e.preventDefault()
+     navigate("/bienvenido")
+   }
 
   return (
     <div className="relative flex min-h-[100vh] flex-col items-center justify-center bg-muted p-0 md:p-4 Fondo">
@@ -79,10 +78,10 @@ export default function  Login_Sersocial({ className, ...props }) {
                       // required
                     />
                   </div>
-                   <Button className="w-full rounded-sm"> {/* type="submit" onClick={handleRedirect}  */}
+                   <Button className="w-full rounded-sm" type="submit" onClick={handleRedirect} >  
                     Iniciar sesión
                   </Button> 
-                  <LoginButton></LoginButton>
+
 
                   <Alert className="bg-yellow-100 text-amber-700 border-none flex items-center space-x-2">
                     <CheckCircle className="h-4 w-4" />

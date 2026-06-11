@@ -50,7 +50,7 @@ export function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   const [expandedItems, setExpandedItems] = useState({})
-  const LoginImage = new URL('../assets/images/componentes/login/Logo-Sersocial-ips.png', import.meta.url).href;
+  const LoginImage = new URL('../assets/images/componentes/login/F1.png', import.meta.url).href;
 
 
   const toggleSubmenu = (name) => {
